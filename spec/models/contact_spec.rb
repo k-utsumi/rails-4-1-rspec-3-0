@@ -27,7 +27,14 @@ RSpec.describe Contact, type: :model do
   end
 
   # メールアドレスがなければ無効な状態であること
-  it "is invalid without an email address" do
+  it "is invalid without an  address" do
+    contact = Contact.new(email: nil)
+    contact.valid?
+    expect(contact.errors[:email]).to include("can't be blank")
+  end
+
+  # 重複したメールアドレスなら無効な状態であること
+  it "is invalid with a duplicate email address" do
     Contact.create(
       firstname: 'Joe', lastname: 'Tester',
       email: 'tester@example.com'
@@ -40,16 +47,12 @@ RSpec.describe Contact, type: :model do
     expect(contact.errors[:email]).to include("has already been taken")
   end
 
-  # 重複したメールアドレスなら無効な状態であること
-  it "is invalid with a duplicate email address"
-
   # 連絡先のフルネームを文字列として返すこと
   it "returns a contact's full name as a string" do
-    fName = 'John'
-    lName = 'Doe'
-    contact = Contact.new(firstname: fName, lastname: lName,
+    name = ['John', 'Doe']
+    contact = Contact.new(firstname: name[0], lastname: name[1],
       email: 'johndoe@example.com')
-    expect(contact.name).to eq fName + ' ' + lName
+    expect(contact.name).to eq name[0] + ' ' + name[1]
   end
 
 
