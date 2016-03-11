@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -44,15 +44,15 @@
       </ul>
     </div>
   </div>
-</div>
+</nav>
 
-<div class="container">
-  <div class="btn-group btn-group-justified">
-    <% ('A'..'Z').each do |letter| %>
-      <%= link_to letter, contacts_path(letter: letter), class: 'btn btn-default' %>
-    <% end %>
+<main class="container">
+  <nav class="nav-letter btn-group btn-group-justified">
+  <% ('A'..'Z').each do |letter| %>
+    <%= link_to letter, contacts_path(letter: letter), class: 'btn btn-default' %>
+  <% end %>
     <%= link_to 'All', contacts_path, class: 'btn btn-default' %>
-  </div>
+  </nav>
 
   <% flash.each do |name, msg| %>
     <div class='alert alert-<%= name == "notice" ? "success" : "error" %>'>
@@ -62,7 +62,7 @@
   <% end %>
 
   <%= yield %>
-</div>
+</main>
 
 <div class="modal fade" id="about_us">
   <div class="modal-dialog">

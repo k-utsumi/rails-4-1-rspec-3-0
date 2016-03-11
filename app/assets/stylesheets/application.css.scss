@@ -1,7 +1,14 @@
+@import "variables";
 @import "bootstrap";
 
 body {
-  margin: {
-    top: 60px;
+  margin-top: 51px;
+  padding-top: $navbar-margin-bottom;
+}
+
+.nav-letter {
+  a {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
