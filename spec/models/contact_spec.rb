@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Contact, type: :model do
+
   # 姓と名とメールがあれば有効な状態であること
   it "is valid with a firstname, lastname and email" do
     contact = Contact.new(
@@ -41,6 +42,11 @@ RSpec.describe Contact, type: :model do
 
   # 重複したメールアドレスなら無効な状態であること
   it "is invalid with a duplicate email address"
+
   # 連絡先のフルネームを文字列として返すこと
-  it "returns a contact's full name as a string"
+  it "returns a contact's full name as a string" do
+    contact = Contact.new(firstname: 'John', lastname: 'Doe',
+      email: 'johndoe@example.com')
+    expect(contact.name).to eq 'John Doe'
+  end
 end
