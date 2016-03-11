@@ -45,8 +45,10 @@ RSpec.describe Contact, type: :model do
 
   # 連絡先のフルネームを文字列として返すこと
   it "returns a contact's full name as a string" do
-    contact = Contact.new(firstname: 'John', lastname: 'Doe',
+    fName = 'John'
+    lName = 'Doe'
+    contact = Contact.new(firstname: fName, lastname: lName,
       email: 'johndoe@example.com')
-    expect(contact.name).to eq 'John Doe'
+    expect(contact.name).to eq fName + ' ' + lName
   end
 end
