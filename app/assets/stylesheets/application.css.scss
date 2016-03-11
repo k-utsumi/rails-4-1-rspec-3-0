@@ -8,8 +8,10 @@ body {
 
 .nav-letter {
   margin-bottom: $navbar-margin-bottom;
-  a {
+  .btn {
     padding-left: 0;
     padding-right: 0;
+
+    &:not(:first-child) { border-left: 0 }
   }
 }
